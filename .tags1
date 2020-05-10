@@ -1,0 +1,13 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+constructor	/Users/mikedhart/Desktop/tcb-north/src/component/auth/Login.js	/^  constructor(){$/;"	function	line:9
+class.state.email	/Users/mikedhart/Desktop/tcb-north/src/component/auth/Login.js	/^    this.state = {$/;"	property	line:11
+class.state.password	/Users/mikedhart/Desktop/tcb-north/src/component/auth/Login.js	/^      email: '',$/;"	property	line:12
+login	/Users/mikedhart/Desktop/tcb-north/src/component/auth/Login.js	/^  login(e){$/;"	function	line:21
+handleChange	/Users/mikedhart/Desktop/tcb-north/src/component/auth/Login.js	/^  handleChange(event) {$/;"	function	line:29
+handleSubmit	/Users/mikedhart/Desktop/tcb-north/src/component/auth/Login.js	/^  handleSubmit(event) {$/;"	function	line:35
+render	/Users/mikedhart/Desktop/tcb-north/src/component/auth/Login.js	/^  render(){$/;"	function	line:39

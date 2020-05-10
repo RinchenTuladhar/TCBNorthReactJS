@@ -1,8 +1,11 @@
-import React from "react"
+import React, { Component } from "react";
+import { Redirect } from 'react-router-dom';
+
+import fire from "../../config/Fire";
 
 import "./login.scss";
 
-class Login extends React.Component {
+class Login extends Component {
   constructor(){
     super()
     this.state = {
@@ -10,8 +13,17 @@ class Login extends React.Component {
       password: ''
     }
 
+    this.login = this.login.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  login(e){
+    e.preventDefault();
+    fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
+    }).catch((error) => {
+      console.log(error);
+    });
   }
 
   handleChange(event) {
@@ -26,8 +38,9 @@ class Login extends React.Component {
 
   render(){
     return (
+    fire.auth().currentUser ? <Redirect to="/admin"/> :
       <div className="login-page">
-        <form className="login-form">
+        <form onSubmit={this.login} className="login-form">
           <div className="container">
             <label>Email
               <input type="email" name="email" onChange={this.handleChange}/>
@@ -35,7 +48,7 @@ class Login extends React.Component {
             <label>Password
               <input type="password" name="password" onChange={this.handleChange}/>
             </label>
-            <input type="submit" value="Login" onClick={this.handleSubmit} className="float-right"/>
+            <input type="submit" value="Login" className="float-right"/>
           </div>
         </form>
       </div>

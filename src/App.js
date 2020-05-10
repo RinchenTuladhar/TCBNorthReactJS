@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import logo from './logo.svg';
 import './App.css';
@@ -16,35 +16,48 @@ import Home from './component/Home';
 import Navbar from './component/Navbar';
 import Login from "./component/auth/Login";
 import Signup from "./component/auth/Signup";
-import * as firebase from 'firebase';
+import Admin from "./component/Admin";
+import fire from "./config/Fire";
 
-var firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
-};
+class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      user: {
 
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
+      }
+    }
+  }
 
-function App() {
-  return (
-    <div className="main">
-    <Router>
-      <Navbar/>
-      <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route exact path="/login" component={Login}/>
-        <Route exact path="/signup" component={Signup}/>
-      </Switch>
-    </Router>
-    </div>
-  );
+  componentDidMount(){
+      this.authListener();
+  }
+
+  authListener(){
+    fire.auth().onAuthStateChanged((user)=> {
+      if(user){
+        this.setState({user});
+      } else {
+        this.setState({
+          user: null
+        });
+      }
+    });
+  }
+  render(){
+    return (
+      <div className="main">
+      <Router>
+        <Navbar/>
+        <Switch>
+          <Route exact path="/" component={Home}/>
+          <Route exact path="/signup" component={Signup}/>
+          {this.state.user ? <Route exact path="/admin" component={Admin}/> : <Route exact path="/login" component={Login}/> }
+        </Switch>
+      </Router>
+      </div>
+    );
+  }
 }
 
 export default App;
