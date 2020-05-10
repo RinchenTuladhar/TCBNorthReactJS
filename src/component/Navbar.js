@@ -8,10 +8,18 @@ function Navbar(){
           <li className="logo">
             [Logo]
           </li>
-          <li className="item">Home</li>
-          <li className="item">Events</li>
-          <li className="item">Fundraising</li>
-          <li className="item">Contact Us</li>
+          <li className="item">
+            <a href="#">Home</a>
+          </li>
+          <li className="item">
+            <a href="#">Events</a>
+          </li>
+          <li className="item">
+            <a href="#">Fundraising</a>
+          </li>
+          <li className="item">
+            <a href="#">Contact Us</a>
+          </li>
         </ul>
       </nav>
   )
