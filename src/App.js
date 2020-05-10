@@ -13,7 +13,8 @@ import {
 
 import Home from './component/Home';
 import Navbar from './component/Navbar';
-import Login from "./component/Login";
+import Login from "./component/auth/Login";
+import Signup from "./component/auth/Signup";
 
 function App() {
   return (
@@ -21,12 +22,9 @@ function App() {
     <Router>
       <Navbar/>
       <Switch>
-        <Route path="/login">
-          <Login/>
-        </Route>
-        <Route path="">
-          <Home/>
-        </Route>
+        <Route exact path="/" component={Home}/>
+        <Route exact path="/login" component={Login}/>
+        <Route exact path="/signup" component={Signup}/>
       </Switch>
     </Router>
     </div>
