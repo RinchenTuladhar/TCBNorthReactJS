@@ -23,7 +23,7 @@ class Navbar extends React.Component{
         <nav className="main-navbar">
           <ul className="menu">
             <li className="logo">
-              [Logo]
+              <img src="img/tibetanlogo.png"/>
             </li>
             <li className="item">
               <a href="/">Home</a>
