@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import fire from "../../config/Fire";
 
@@ -21,6 +21,7 @@ class Login extends Component {
   login(e){
     e.preventDefault();
     fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
+      this.props.history.push('/admin');
     }).catch((error) => {
       console.log(error);
     });
@@ -38,10 +39,10 @@ class Login extends Component {
 
   render(){
     return (
-    fire.auth().currentUser ? <Redirect to="/admin"/> :
       <div className="login-page">
         <form onSubmit={this.login} className="login-form">
           <div className="container">
+            <h1>Tashi Delek.</h1>
             <label>Email
               <input type="email" name="email" onChange={this.handleChange}/>
             </label><br/>

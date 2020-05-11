@@ -39,7 +39,7 @@ class Navbar extends React.Component{
             </li>
               <li className="item">
               { firebase.auth().currentUser ?
-                <a href="#" onClick={this.logout}>Logout</a> : <a href="/login">Login</a>
+                <a href="/" onClick={this.logout}>Logout</a> : <a href="/login">Login</a>
               }
               </li>
           </ul>

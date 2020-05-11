@@ -10,11 +10,15 @@ class Admin extends React.Component {
   }
 
   componentDidMount(){
-    var user = fire.auth().currentUser;
-
-    if(!user){
-      return <Redirect to="/"/>;
+    if(this.authListener()){
+      this.props.history.push('/login');
     }
+  }
+
+  authListener(){
+    fire.auth().onAuthStateChanged((user)=> {
+      return user;
+    });
   }
 
   render(){
