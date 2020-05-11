@@ -15,7 +15,6 @@ import {
 import Home from './component/Home';
 import Navbar from './component/Navbar';
 import Login from "./component/auth/Login";
-import Signup from "./component/auth/Signup";
 import Admin from "./component/Admin";
 import fire from "./config/Fire";
 
@@ -51,7 +50,6 @@ class App extends Component {
         <Navbar/>
         <Switch>
           <Route exact path="/" component={Home}/>
-          <Route exact path="/signup" component={Signup}/>
           {this.state.user ? <Route exact path="/admin" component={Admin}/> : <Route exact path="/login" component={Login}/> }
         </Switch>
       </Router>
