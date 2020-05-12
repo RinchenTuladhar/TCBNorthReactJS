@@ -5,11 +5,13 @@ function Home(){
   return (
     <div className="home-page">
       <div className="banner">
-        <img src="/img/grouppara.jpg"/>
+        <img src="/img/dreamstimemedium_67844386.jpg"/>
+        <h1>Welcome to the Tibetan Community UK North Association</h1>
       </div>
       <div class="content">
-        <h1>TCB North UK</h1>
-        <p><strong>Welcome to the Tibetan Community UK North Association</strong></p>
+        <span class="site-logo">
+          <center><img src="/img/tibetanlogo.png"/></center>
+        </span>
         <hr/>
         <p>
         The Tibetan Community UK North Association (TCB) was established in February 2014 in Manchester in the North of England.
