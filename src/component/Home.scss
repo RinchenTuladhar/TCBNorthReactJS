@@ -1,8 +1,17 @@
 .home-page {
   .banner {
-    height: 40vw;
-    background-image: url("/img/grouppara.jpg");
-    background-size: cover;
+    img {
+      height: 100%;
+      left: 0;
+      -o-object-fit: cover;
+      object-fit: cover;
+      top: 0;
+      -ms-transform: none;
+      -moz-transform: none;
+      -webkit-transform: none;
+      transform: none;
+      width: 100%;
+    }
   }
 
   .content {

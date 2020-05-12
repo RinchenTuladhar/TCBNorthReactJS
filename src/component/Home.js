@@ -4,7 +4,9 @@ import "./Home.scss";
 function Home(){
   return (
     <div className="home-page">
-      <div className="banner"></div>
+      <div className="banner">
+        <img src="/img/grouppara.jpg"/>
+      </div>
       <div class="content">
         <h1>TCB North UK</h1>
         <p><strong>Welcome to the Tibetan Community UK North Association</strong></p>

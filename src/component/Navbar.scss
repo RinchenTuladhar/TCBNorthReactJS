@@ -1,13 +1,16 @@
 .main-navbar {
+  width: 100%;
+  background: transparent;
+  position: fixed;
+
   ul {
     height: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
 
     li {
       list-style-type: none;
-      flex: 1;
+      padding-left: 5vw;
 
       a {
         text-decoration: none;
@@ -15,9 +18,14 @@
       }
     }
 
+    li.logout {
+      margin-left: auto;
+      padding-right: 20px;
+    }
+
     .logo img{
       max-width: 100%;
-      height: 7vw;
+      height: 4vw;
     }
   }
 }
