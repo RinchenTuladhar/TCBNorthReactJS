@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import CookieConsent from "react-cookie-consent";
 
-import logo from './logo.svg';
 import './App.css';
 
 import {
@@ -57,6 +57,7 @@ class App extends Component {
           </div>
           { this.state.user ? <Route exact path="/admin" component={Admin}/> : <Route exact path="/login" component={Login}/> }
         </Switch>
+        <CookieConsent>This website uses cookies to enhance the user experience.</CookieConsent>
         <Footer/>
       </Router>
       </div>
