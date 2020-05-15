@@ -15,10 +15,14 @@ import {
 import Home from './component/Home';
 import Navbar from './component/Navbar';
 import Login from "./component/auth/Login";
-import Admin from "./component/admin/Dashboard";
 import Footer from "./component/Footer";
 import Events from "./component/Events";
+
+import Admin from "./component/admin/Dashboard";
 import AdminNavbar from "./component/admin/AdminNavbar";
+import AdminEditPage from "./component/admin/EditPage";
+import AdminEditNavigation from "./component/admin/EditNavigation";
+
 import fire from "./config/Fire";
 
 class App extends Component {
@@ -50,10 +54,15 @@ class App extends Component {
     return (
       <div className="main">
       <Router>
-        {window.location.pathname === "/admin" ? <AdminNavbar/> : <Navbar/>}
+        {window.location.pathname.includes("/admin")  ? <AdminNavbar/> : <Navbar/>}
         <Switch>
           <Route exact path="/" component={Home}/>
-          { this.state.user ? <Route exact path="/admin" component={Admin}/> : <Route exact path="/login" component={Login}/> }
+          { this.state.user ?
+            <div className="squished">
+              <Route exact path="/admin" component={Admin}/>
+              <Route exact path="/admin/edit_pages" component={AdminEditPage}/>
+              <Route exact path="/admin/edit_navigation" component={AdminEditNavigation}/>
+            </div> : <Route exact path="/login" component={Login}/> }
           <div className="squished">
             <Route exact path="/events" component={Events}/>
           </div>

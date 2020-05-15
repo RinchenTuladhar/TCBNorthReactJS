@@ -24,13 +24,13 @@ class AdminNavbar extends Component {
               <p><strong><u>Admin</u></strong></p>
             </li>
             <li className="item">
-              <a href="/events">Dashboard</a>
+              <a href="/admin">Dashboard</a>
             </li>
             <li className="item">
-              <a href="#">Edit Pages</a>
+              <a href="/admin/edit_pages">Edit Pages</a>
             </li>
             <li className="item">
-              <a href="#">Edit Navigation</a>
+              <a href="/admin/edit_navigation">Edit Navigation</a>
             </li>
             <li className="item logout">
               <a href="/" onClick={this.logout}>Logout</a>
