@@ -42,7 +42,7 @@ class EditPage extends Component{
 
     db.collection("pages").where("name", "==", this.state.name).get().then(function(querySnapshop){
       if(querySnapshop.size === 0){
-        const pagesRef = db.collection("pages").add({
+        db.collection("pages").add({
           child: child,
           name: name,
           parent_name: parent_name

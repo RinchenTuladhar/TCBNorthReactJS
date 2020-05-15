@@ -5,12 +5,12 @@ function Home(){
   return (
     <div className="home-page">
       <div className="banner">
-        <img src="/img/dreamstimemedium_67844386.jpg"/>
+        <img src="/img/dreamstimemedium_67844386.jpg" alt="Tibetan dancers"/>
         <h1>Welcome to the Tibetan Community UK North Association</h1>
       </div>
       <div className="content">
         <span className="site-logo">
-          <center><img src="/img/tibetanlogo.png"/></center>
+          <center><img src="/img/tibetanlogo.png" alt="TCB North UK Logo"/></center>
         </span>
         <hr/>
         <p>

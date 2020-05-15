@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import { Link, useHistory } from 'react-router-dom';
-
 import fire from "../../config/Fire";
-
 import "./login.scss";
 
 class Login extends Component {

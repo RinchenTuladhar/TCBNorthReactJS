@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 
 import fire from "../../config/Fire";
 
-class Admin extends React.Component {
+class Admin extends Component {
   constructor(){
     super();
     this.state = {};
