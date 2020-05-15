@@ -16,6 +16,7 @@ import Home from './component/Home';
 import Navbar from './component/Navbar';
 import Login from "./component/auth/Login";
 import Admin from "./component/Admin";
+import Footer from "./component/Footer";
 import fire from "./config/Fire";
 
 class App extends Component {
@@ -52,6 +53,7 @@ class App extends Component {
           <Route exact path="/" component={Home}/>
           { this.state.user ? <Route exact path="/admin" component={Admin}/> : <Route exact path="/login" component={Login}/> }
         </Switch>
+        <Footer/>
       </Router>
       </div>
     );

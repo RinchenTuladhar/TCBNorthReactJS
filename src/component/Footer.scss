@@ -1,0 +1,25 @@
+.site-footer {
+  footer {
+    height: 20vh;
+    background: #A8A6A6;
+
+    ul {
+      list-style-type: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding: 0px;
+      margin: 0px;
+
+      li {
+        margin-left: 20px;
+
+        a {
+          color: white;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

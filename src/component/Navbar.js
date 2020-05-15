@@ -17,8 +17,14 @@ class Navbar extends React.Component{
   componentDidMount(){
     document.addEventListener("scroll", () => {
       const backgroundcolor = window.scrollY > 100 ? "white" : "transparent"
+      const color = window.scrollY > 100 ? "black" : "white"
 
-      this.setState({ backgroundColor: backgroundcolor });
+      this.setState({
+        backgroundColor: backgroundcolor,
+        color: color
+      });
+
+      console.log(this.state.backgroundColor);
     });
   }
 
@@ -32,23 +38,23 @@ class Navbar extends React.Component{
 
   render(){
     return(
-        <nav className="main-navbar" style={this.state}>
+        <nav className="main-navbar" style={{backgroundColor: this.state.backgroundColor}}>
           <ul className="menu">
             <li className="logo">
-              <img src="img/tibetanlogo.png"/>
+              <a href="/"><img src="img/tibetanlogo.png"/></a>
             </li>
             <li className="item">
-              <a href="#">Events</a>
+              <a href="#" style={{color: this.state.color}}>Events</a>
             </li>
             <li className="item">
-              <a href="#">Fundraising</a>
+              <a href="#" style={{color: this.state.color}}>Fundraising</a>
             </li>
             <li className="item">
-              <a href="#">Contact Us</a>
+              <a href="#" style={{color: this.state.color}}>Contact Us</a>
             </li>
             <li className="item logout">
             { firebase.auth().currentUser ?
-              <a href="/" onClick={this.logout}>Logout</a> : <a href="/login">Login</a>
+              <a href="/" onClick={this.logout} style={{color: this.state.color}}>Logout</a> : <a href="/login" style={{color: this.state.color}}>Login</a>
             }
             </li>
           </ul>
