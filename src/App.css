@@ -17,3 +17,19 @@
 .float-left {
   float: left;
 }
+
+.squished {
+  margin: 0vh 20vh;
+}
+
+@media only screen and (max-width: 800px) {
+  .squished {
+    margin: 0vh 10vh;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .squished {
+    margin: 0vh 5vh;
+  }
+}

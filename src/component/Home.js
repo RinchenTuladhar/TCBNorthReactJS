@@ -8,8 +8,8 @@ function Home(){
         <img src="/img/dreamstimemedium_67844386.jpg"/>
         <h1>Welcome to the Tibetan Community UK North Association</h1>
       </div>
-      <div class="content">
-        <span class="site-logo">
+      <div className="content">
+        <span className="site-logo">
           <center><img src="/img/tibetanlogo.png"/></center>
         </span>
         <hr/>
@@ -22,7 +22,7 @@ function Home(){
         <p>
         Our main aim is to give Tibetan people residing in the North (including Yorkshire, Lancashire, Nottinghamshire, Derbyshire, Merseyside, Newcastle, and Sunderland) the opportunity to meet other Tibetans and their families with the focus on preserving the language of Tibet, its culture and identity. We aim to keep this alive in our Tibetan Community UK North Association and thriving in the UK for the benefit of the People from Tibet, the Tibetan Cause and more importantly to make others aware of the beauty of our colourful and varied culture.
         </p>
-        
+
         <p>
         We like to come together in various locations throughout the North of England, mainly Manchester and Liverpool, whether it be to celebrate key events in the Tibetan lunar calendar, to raise money through sponsorship or a simple picnic where friends can meet and have fun.
         </p>

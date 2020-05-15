@@ -15,17 +15,20 @@ class Navbar extends React.Component{
   }
 
   componentDidMount(){
-    document.addEventListener("scroll", () => {
-      const backgroundcolor = window.scrollY > 100 ? "white" : "transparent"
-      const color = window.scrollY > 100 ? "black" : "white"
+    if(window.location.pathname == "/"){
+      this.setState({ color: "white", position: "fixed" });
 
-      this.setState({
-        backgroundColor: backgroundcolor,
-        color: color
+      document.addEventListener("scroll", () => {
+        const backgroundcolor = window.scrollY > 100 ? "white" : "transparent"
+        const color = window.scrollY > 100 ? "black" : "white"
+
+        this.setState({
+          backgroundColor: backgroundcolor,
+          color: color
+        });
+
       });
-
-      console.log(this.state.backgroundColor);
-    });
+    }
   }
 
   logout(){
@@ -38,13 +41,13 @@ class Navbar extends React.Component{
 
   render(){
     return(
-        <nav className="main-navbar" style={{backgroundColor: this.state.backgroundColor}}>
+        <nav className="main-navbar" style={{backgroundColor: this.state.backgroundColor, position: this.state.position}}>
           <ul className="menu">
             <li className="logo">
               <a href="/"><img src="img/tibetanlogo.png"/></a>
             </li>
             <li className="item">
-              <a href="#" style={{color: this.state.color}}>Events</a>
+              <a href="/events" style={{color: this.state.color}}>Events</a>
             </li>
             <li className="item">
               <a href="#" style={{color: this.state.color}}>Fundraising</a>

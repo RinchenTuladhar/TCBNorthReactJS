@@ -17,6 +17,7 @@ import Navbar from './component/Navbar';
 import Login from "./component/auth/Login";
 import Admin from "./component/Admin";
 import Footer from "./component/Footer";
+import Events from "./component/Events";
 import fire from "./config/Fire";
 
 class App extends Component {
@@ -51,6 +52,9 @@ class App extends Component {
         <Navbar/>
         <Switch>
           <Route exact path="/" component={Home}/>
+          <div className="squished">
+            <Route exact path="/events" component={Events}/>
+          </div>
           { this.state.user ? <Route exact path="/admin" component={Admin}/> : <Route exact path="/login" component={Login}/> }
         </Switch>
         <Footer/>
