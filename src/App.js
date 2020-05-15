@@ -52,10 +52,10 @@ class App extends Component {
         <Navbar/>
         <Switch>
           <Route exact path="/" component={Home}/>
+          { this.state.user ? <Route exact path="/admin" component={Admin}/> : <Route exact path="/login" component={Login}/> }
           <div className="squished">
             <Route exact path="/events" component={Events}/>
           </div>
-          { this.state.user ? <Route exact path="/admin" component={Admin}/> : <Route exact path="/login" component={Login}/> }
         </Switch>
         <CookieConsent>This website uses cookies to enhance the user experience.</CookieConsent>
         <Footer/>
