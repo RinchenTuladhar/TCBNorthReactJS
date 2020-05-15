@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 
-import fire from "../config/Fire";
+import fire from "../../config/Fire";
 
 class Admin extends React.Component {
   constructor(){

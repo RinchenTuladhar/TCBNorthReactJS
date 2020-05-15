@@ -15,9 +15,10 @@ import {
 import Home from './component/Home';
 import Navbar from './component/Navbar';
 import Login from "./component/auth/Login";
-import Admin from "./component/Admin";
+import Admin from "./component/admin/Dashboard";
 import Footer from "./component/Footer";
 import Events from "./component/Events";
+import AdminNavbar from "./component/admin/AdminNavbar";
 import fire from "./config/Fire";
 
 class App extends Component {
@@ -49,7 +50,7 @@ class App extends Component {
     return (
       <div className="main">
       <Router>
-        <Navbar/>
+        {window.location.pathname === "/admin" ? <AdminNavbar/> : <Navbar/>}
         <Switch>
           <Route exact path="/" component={Home}/>
           { this.state.user ? <Route exact path="/admin" component={Admin}/> : <Route exact path="/login" component={Login}/> }
