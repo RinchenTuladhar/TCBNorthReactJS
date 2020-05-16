@@ -56,7 +56,7 @@ class EditPage extends Component{
 
   render(){
     return (
-      <div className="container">
+      <div className="container squished">
         <h1>Edit Page</h1>
         <form onSubmit={this.handleSubmit}>
           <label>Page name

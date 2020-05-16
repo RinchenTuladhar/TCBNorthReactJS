@@ -22,7 +22,7 @@ class Admin extends Component {
 
   render(){
     return (
-      <div>
+      <div className="squished">
         <h1>Admin</h1>
       </div>
     )

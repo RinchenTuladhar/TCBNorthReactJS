@@ -10,7 +10,8 @@ class CreatePage extends Component{
     this.state = {
       name: "",
       child: false,
-      parent_name: ""
+      parent_name: "",
+      url: ""
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -36,16 +37,15 @@ class CreatePage extends Component{
     e.preventDefault();
     const db = firebase.firestore();
 
-    const child = this.state.child;
-    const name = this.state.name;
-    const parent_name = this.state.child;
+    const form_data = this.state
 
     db.collection("pages").where("name", "==", this.state.name).get().then(function(querySnapshop){
       if(querySnapshop.size === 0){
         db.collection("pages").add({
-          child: child,
-          name: name,
-          parent_name: parent_name
+          child: form_data.child,
+          name: form_data.name,
+          parent_name: form_data.parent_name,
+          url: form_data.url
         });
       } else {
         console.log("Exists!");
@@ -55,7 +55,7 @@ class CreatePage extends Component{
 
   render(){
     return (
-      <div className="container">
+      <div className="container squished">
         <h1>Create Page</h1>
         <form onSubmit={this.handleSubmit}>
           <label>Page name
@@ -70,6 +70,12 @@ class CreatePage extends Component{
           <label>No<input type="radio" id="no" name="child" value="no" onChange={this.handleChange}/></label>
           <br/>
           <br/>
+
+          <label>If yes, state url, e.g "events":
+            <br/>
+            <input type="text" name="url" onChange={this.handleChange}/>
+          </label>
+          <br/><br/>
 
           <label>If no, which page does this belong to:
             <input type="text" name="parent_name" onChange={this.handleChange}/>

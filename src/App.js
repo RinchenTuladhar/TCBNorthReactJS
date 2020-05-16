@@ -13,7 +13,6 @@ import Home from './component/Home';
 import Navbar from './component/Navbar';
 import Login from "./component/auth/Login";
 import Footer from "./component/Footer";
-import Events from "./component/Events";
 import CustomPage from "./component/CustomPage";
 
 import Admin from "./component/admin/Dashboard";
@@ -34,6 +33,7 @@ class App extends Component {
     }
   }
 
+
   componentDidMount(){
       this.authListener();
   }
@@ -50,23 +50,21 @@ class App extends Component {
     });
   }
   render(){
+
     return (
       <div className="main">
       <Router>
         {window.location.pathname.includes("/admin")  ? <AdminNavbar/> : <Navbar/>}
         <Switch>
           <Route exact path="/" component={Home}/>
-          <Route component={CustomPage} />
-          { this.state.user ?
-            <div className="squished">
-              <Route exact path="/admin" component={Admin}/>
-              <Route exact path="/admin/create_page" component={AdminCreatePage}/>
-              <Route exact path="/admin/edit_page" component={AdminEditPage}/>
-              <Route exact path="/admin/edit_navigation" component={AdminEditNavigation}/>
-            </div> : <Route exact path="/login" component={Login}/> }
-          <div className="squished">
-            <Route exact path="/events" component={Events}/>
-          </div>
+          
+          <Route exact path="/admin" component={Admin}/>
+          <Route exact path="/admin/create_page" component={AdminCreatePage}/>
+          <Route exact path="/admin/edit_page" component={AdminEditPage}/>
+          <Route exact path="/admin/edit_navigation" component={AdminEditNavigation}/>
+          <Route exact path="/login" component={Login}/>
+          <Route path="*" component={CustomPage}/>
+
         </Switch>
         <CookieConsent>This website uses cookies to enhance the user experience.</CookieConsent>
         <Footer/>
