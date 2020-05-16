@@ -7,10 +7,23 @@ class EditPage extends Component{
   constructor(){
     super();
 
+    var temp_nav_items = [];
+
+    firebase.firestore().collection("pages").get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        var doc_data = doc.data();
+
+        if(doc_data.name !== undefined){
+          temp_nav_items.push(doc_data);
+        }
+      });
+    })
+
     this.state = {
       name: "",
       child: false,
-      parent_name: ""
+      parent_name: "",
+      nav_items: temp_nav_items
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -39,18 +52,6 @@ class EditPage extends Component{
     const child = this.state.child;
     const name = this.state.name;
     const parent_name = this.state.child;
-
-    db.collection("pages").where("name", "==", this.state.name).get().then(function(querySnapshop){
-      if(querySnapshop.size === 0){
-        db.collection("pages").add({
-          child: child,
-          name: name,
-          parent_name: parent_name
-        });
-      } else {
-        console.log("Exists!");
-      }
-    });
   }
 
   render(){
@@ -59,11 +60,13 @@ class EditPage extends Component{
         <h1>Edit Page</h1>
         <form onSubmit={this.handleSubmit}>
           <label>Page name
-            <br/>
-            <input type="text" name="name" onChange={this.handleChange}/>
+            {this.state.nav_items.map((item,i) => <p>{item.name}</p>)}
           </label>
           <br/><br/>
-
+          <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+          <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+          <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+          <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
           <label>Main navigation?</label>
           <br/>
           <label>Yes<input type="radio" id="yes" name="child" value="yes" onChange={this.handleChange} checked/></label>

@@ -14,6 +14,7 @@ import Navbar from './component/Navbar';
 import Login from "./component/auth/Login";
 import Footer from "./component/Footer";
 import Events from "./component/Events";
+import CustomPage from "./component/CustomPage";
 
 import Admin from "./component/admin/Dashboard";
 import AdminNavbar from "./component/admin/AdminNavbar";
@@ -55,6 +56,7 @@ class App extends Component {
         {window.location.pathname.includes("/admin")  ? <AdminNavbar/> : <Navbar/>}
         <Switch>
           <Route exact path="/" component={Home}/>
+          <Route component={CustomPage} />
           { this.state.user ?
             <div className="squished">
               <Route exact path="/admin" component={Admin}/>
