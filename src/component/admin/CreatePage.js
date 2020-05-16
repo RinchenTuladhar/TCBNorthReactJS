@@ -3,7 +3,7 @@ import firebase from "../../config/Fire";
 
 import "./CreatePage.scss";
 
-class EditPage extends Component{
+class CreatePage extends Component{
   constructor(){
     super();
 
@@ -56,7 +56,7 @@ class EditPage extends Component{
   render(){
     return (
       <div className="container">
-        <h1>Edit Page</h1>
+        <h1>Create Page</h1>
         <form onSubmit={this.handleSubmit}>
           <label>Page name
             <br/>
@@ -83,4 +83,4 @@ class EditPage extends Component{
 
 }
 
-export default EditPage;
+export default CreatePage;

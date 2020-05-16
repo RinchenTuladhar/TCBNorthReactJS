@@ -59,7 +59,7 @@ class Navbar extends Component{
             <li className="logo">
               <a href="/"><img src="img/tibetanlogo.png" alt="TCB North UK Logo"/></a>
             </li>
-            
+
             {this.state.nav_items.map((item,i) => <li className="item" key={i}><a href={item.name} style={{color: this.state.color}}>{item.name}</a></li>)}
 
             <li className="item logout">

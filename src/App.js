@@ -17,6 +17,7 @@ import Events from "./component/Events";
 
 import Admin from "./component/admin/Dashboard";
 import AdminNavbar from "./component/admin/AdminNavbar";
+import AdminCreatePage from "./component/admin/CreatePage";
 import AdminEditPage from "./component/admin/EditPage";
 import AdminEditNavigation from "./component/admin/EditNavigation";
 
@@ -57,7 +58,8 @@ class App extends Component {
           { this.state.user ?
             <div className="squished">
               <Route exact path="/admin" component={Admin}/>
-              <Route exact path="/admin/edit_pages" component={AdminEditPage}/>
+              <Route exact path="/admin/create_page" component={AdminCreatePage}/>
+              <Route exact path="/admin/edit_page" component={AdminEditPage}/>
               <Route exact path="/admin/edit_navigation" component={AdminEditNavigation}/>
             </div> : <Route exact path="/login" component={Login}/> }
           <div className="squished">

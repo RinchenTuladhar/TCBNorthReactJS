@@ -27,7 +27,10 @@ class AdminNavbar extends Component {
               <a href="/admin">Dashboard</a>
             </li>
             <li className="item">
-              <a href="/admin/edit_pages">Edit Pages</a>
+              <a href="/admin/create_page">Create Page</a>
+            </li>
+            <li className="item">
+              <a href="/admin/edit_page">Edit Page</a>
             </li>
             <li className="item">
               <a href="/admin/edit_navigation">Edit Navigation</a>
