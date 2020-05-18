@@ -3,7 +3,22 @@ import ReactDOM from 'react-dom';
 import createToolbarPlugin from 'draft-js-static-toolbar-plugin';
 import 'draft-js/dist/Draft.css';
 import {Editor, EditorState} from 'draft-js';
+import TextEditor from "./text_editor/CustomToolbarEditor";
 import firebase from "../../config/Fire";
+
+import {
+  ItalicButton,
+  BoldButton,
+  UnderlineButton,
+  CodeButton,
+  HeadlineOneButton,
+  HeadlineTwoButton,
+  HeadlineThreeButton,
+  UnorderedListButton,
+  OrderedListButton,
+  BlockquoteButton,
+  CodeBlockButton,
+} from 'draft-js-buttons';
 
 import "./EditPage.scss";
 
@@ -83,11 +98,12 @@ class EditPage extends Component{
             })
           }
           </select>
-          <Editor
+
+          <TextEditor
             editorState={this.state.editorState}
             onChange={this.onChange}
             plugins={[toolbarPlugin]}
-          />
+           />
 
           <input type="submit" value="Create"/>
         </form>
