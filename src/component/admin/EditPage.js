@@ -1,7 +1,11 @@
 import React, { Component } from "react";
+import ReactDOM from 'react-dom';
+import createToolbarPlugin from 'draft-js-static-toolbar-plugin';
+import 'draft-js/dist/Draft.css';
+import {Editor, EditorState} from 'draft-js';
 import firebase from "../../config/Fire";
 
-import "./CreatePage.scss";
+import "./EditPage.scss";
 
 class EditPage extends Component{
   constructor(){
@@ -9,10 +13,11 @@ class EditPage extends Component{
 
     this.state = {
       name: "",
-      content: "",
+      editorState: EditorState.createEmpty(),
       nav_items: []
     }
 
+    this.onChange = editorState => this.setState({editorState});
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -63,6 +68,8 @@ class EditPage extends Component{
   }
 
   render(){
+    const toolbarPlugin = createToolbarPlugin();
+
     return (
       <div className="container squished">
       <h1>Edit Page Content</h1>
@@ -76,6 +83,12 @@ class EditPage extends Component{
             })
           }
           </select>
+          <Editor
+            editorState={this.state.editorState}
+            onChange={this.onChange}
+            plugins={[toolbarPlugin]}
+          />
+
           <input type="submit" value="Create"/>
         </form>
       </div>
