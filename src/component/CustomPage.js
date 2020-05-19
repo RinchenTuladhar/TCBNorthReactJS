@@ -17,7 +17,7 @@ class CustomPage extends Component {
       if(window.location.pathname.includes("/edit")){
         this.setState({
           edit: true,
-          url: window.location.href.split("/")[3]
+          url: window.location.href.split("/")[4]
         });
       } else {
         const url = window.location.pathname.replace("/","")
