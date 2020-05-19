@@ -25,8 +25,6 @@ class CustomPage extends Component {
         db.collection("pages").where("url", "==", url).get().then(function(querySnapshop){
           if(querySnapshop.size === 0){
             notFound = true;
-          } else {
-            console.log("Exists!");
           }
         });
 
