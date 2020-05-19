@@ -43,15 +43,14 @@ class EditPageContent extends Component {
   handleSubmit(e){
     e.preventDefault();
     const db = firebase.firestore();
-    const form_data = this.state
+    const form_data = this.state;
     const converted_content = JSON.stringify(convertToRaw(form_data.editorState.getCurrentContent()));
 
-
-    db.collection("page_content").where("url", "==", this.state.url).get().then(function(querySnapshop){
+    db.collection("page_content").where("page_name", "==", this.state.url).get().then(function(querySnapshop){
       if(querySnapshop.size > 0){
         querySnapshop.forEach(function(doc){
           db.collection("page_content").doc(doc.id).update({
-            content: this.state.editorState
+            content: converted_content
           });
         })
       } else {
