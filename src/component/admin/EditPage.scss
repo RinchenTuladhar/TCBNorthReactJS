@@ -42,3 +42,21 @@ input[type=submit]:hover {
   background: #fefefe;
   min-height: 200px;
 }
+
+.page {
+  height: 5em;
+  border: 1px solid black;
+  width: 100%;
+  margin-top: 10px;
+
+  p {
+    text-align: center;
+    padding-top: 10px;
+  }
+  a {
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+  }
+}

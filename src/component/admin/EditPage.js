@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
-import createToolbarPlugin from 'draft-js-static-toolbar-plugin';
-import 'draft-js/dist/Draft.css';
-import {Editor, EditorState} from 'draft-js';
-import TextEditor from "./text_editor/CustomToolbarEditor";
+
 import firebase from "../../config/Fire";
+import EditPageContent from "./EditPageContent";
 
 import {
   ItalicButton,
@@ -28,11 +26,9 @@ class EditPage extends Component{
 
     this.state = {
       name: "",
-      editorState: EditorState.createEmpty(),
       nav_items: []
     }
 
-    this.onChange = editorState => this.setState({editorState});
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -83,30 +79,16 @@ class EditPage extends Component{
   }
 
   render(){
-    const toolbarPlugin = createToolbarPlugin();
-
     return (
       <div className="container squished">
-      <h1>Edit Page Content</h1>
-        <form onSubmit={this.handleSubmit}>
-          <select id="pages">
-          {
-            this.state.nav_items.map(v => {
-              return (
-                <option value={v.name}>{v.name}</option>
-              );
-            })
-          }
-          </select>
-
-          <TextEditor
-            editorState={this.state.editorState}
-            onChange={this.onChange}
-            plugins={[toolbarPlugin]}
-           />
-
-          <input type="submit" value="Create"/>
-        </form>
+      <h1> Click page to edit:</h1>
+      {
+        this.state.nav_items.map(v => {
+          return (
+            <div className="page"><p><a href={v.url + "/edit"}>{v.name}</a></p></div>
+          );
+        })
+      }
       </div>
     );
   }

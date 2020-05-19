@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NotFound from "./NotFound";
+import EditPageContent from "./admin/EditPageContent";
 import firebase from "../config/Fire";
 
 class CustomPage extends Component {
@@ -10,40 +11,53 @@ class CustomPage extends Component {
     }
 
     componentDidMount(){
-      const url = window.location.pathname.replace("/","")
       const db = firebase.firestore();
       var notFound = false;
 
-      db.collection("pages").where("url", "==", url).get().then(function(querySnapshop){
-        if(querySnapshop.size === 0){
-          notFound = true;
-        } else {
-          console.log("Exists!");
-        }
-      });
-
-      if(notFound){
+      if(window.location.pathname.includes("/edit")){
         this.setState({
-          redirect: true
+          edit: true,
+          url: window.location.href.split("/")[3]
         });
+      } else {
+        const url = window.location.pathname.replace("/","")
+
+        db.collection("pages").where("url", "==", url).get().then(function(querySnapshop){
+          if(querySnapshop.size === 0){
+            notFound = true;
+          } else {
+            console.log("Exists!");
+          }
+        });
+
+        if(notFound){
+          this.setState({
+            redirect: true
+          });
+        }
       }
     }
 
     render(){
-      if(this.state.redirect){
+      if(this.state.edit === true){
         return (
-          <div className="squished">
-            <NotFound/>
+          <div>
+            <EditPageContent url={this.state.url}/>
+          </div>
+        )
+      } else if(this.state.redirect === true) {
+        return (
+          <div>
+            <h1>Redirect</h1>
           </div>
         )
       } else {
         return (
-          <div className="squished">
-            <h1> Custom Page </h1>
+          <div>
+            <h1>Found</h1>
           </div>
         )
       }
-
     }
 }
 
