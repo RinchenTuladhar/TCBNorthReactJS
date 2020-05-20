@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import NotFound from "./NotFound";
 import EditPageContent from "./admin/EditPageContent";
+import CustomPageContent from "./CustomPageContent";
 import firebase from "../config/Fire";
 
 class CustomPage extends Component {
@@ -52,7 +53,7 @@ class CustomPage extends Component {
       } else {
         return (
           <div>
-            <h1>Found</h1>
+            <CustomPageContent/>
           </div>
         )
       }
