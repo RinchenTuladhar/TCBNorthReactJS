@@ -10,6 +10,7 @@ class EditPageContent extends Component {
       content: ""
     }
 
+    this.handleEditorChange = this.handleEditorChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -20,7 +21,9 @@ class EditPageContent extends Component {
     db.collection("page_content").where("page_name", "==", this.state.url).get().then(function(querySnapshop){
       if(querySnapshop.size > 0){
         querySnapshop.forEach(function(doc){
-
+          that.setState({
+            content: doc.data().content
+          });
         });
       }
     });
@@ -54,10 +57,13 @@ class EditPageContent extends Component {
   }
 
   render(){
+    const editor_content =  this.state.content;
+
+
     return (
       <form onSubmit={this.handleSubmit}>
         <Editor
-        initialValue="<p>Initial content</p>"
+        value={editor_content}
         init={{
           height: 500,
           menubar: false,

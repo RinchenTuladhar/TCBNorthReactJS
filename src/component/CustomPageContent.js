@@ -19,7 +19,7 @@ class CustomPageContent extends Component {
       if(querySnapshot.size > 0){
         querySnapshot.forEach(function(doc){
           that.setState({
-            content: that.state.content
+            content: doc.data().content
           });
         });
       }
