@@ -28,6 +28,8 @@ class CustomPageContent extends Component {
 
   render(){
     const html_content = this.state.content
+
+    console.log(html_content)
     return (
       <div className="squished">
         <div dangerouslySetInnerHTML={{__html: html_content}}/>
