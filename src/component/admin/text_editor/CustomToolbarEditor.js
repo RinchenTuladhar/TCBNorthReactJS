@@ -1,24 +1,6 @@
 /* eslint-disable react/no-multi-comp */
 import React, { Component } from 'react';
 
-import Editor, { createEditorStateWithText } from 'draft-js-plugins-editor';
-
-import createToolbarPlugin, { Separator } from 'draft-js-static-toolbar-plugin';
-import {
-  ItalicButton,
-  BoldButton,
-  UnderlineButton,
-  CodeButton,
-  HeadlineOneButton,
-  HeadlineTwoButton,
-  HeadlineThreeButton,
-  UnorderedListButton,
-  OrderedListButton,
-  BlockquoteButton,
-  CodeBlockButton,
-} from 'draft-js-buttons';
-import editorStyles from './editorStyles.css';
-
 
 class HeadlinesPicker extends Component {
   componentDidMount() {

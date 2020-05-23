@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-import { EditorState, convertFromRaw } from 'draft-js';
-import { stateToHTML } from 'draft-js-export-html';
-import "draft-convert";
 import firebase from "../config/Fire";
 
 class CustomPageContent extends Component {
@@ -9,7 +6,7 @@ class CustomPageContent extends Component {
     super();
 
     this.state = {
-      content: EditorState.createEmpty(),
+      content: "",
       url: window.location.href.split("/")[3]
     }
   }
@@ -21,11 +18,8 @@ class CustomPageContent extends Component {
     db.collection("page_content").where("page_name", "==", this.state.url).get().then(function(querySnapshot){
       if(querySnapshot.size > 0){
         querySnapshot.forEach(function(doc){
-          const raw_content = convertFromRaw(JSON.parse(doc.data().content));
-          const editorState = EditorState.createWithContent(raw_content);
-
           that.setState({
-            content: editorState
+            content: that.state.content
           });
         });
       }
@@ -33,7 +27,7 @@ class CustomPageContent extends Component {
   }
 
   render(){
-    const html_content = stateToHTML(this.state.content.getCurrentContent());
+    const html_content = this.state.content
     return (
       <div className="squished">
         <div dangerouslySetInnerHTML={{__html: html_content}}/>

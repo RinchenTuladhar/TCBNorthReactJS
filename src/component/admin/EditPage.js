@@ -4,20 +4,6 @@ import ReactDOM from 'react-dom';
 import firebase from "../../config/Fire";
 import EditPageContent from "./EditPageContent";
 
-import {
-  ItalicButton,
-  BoldButton,
-  UnderlineButton,
-  CodeButton,
-  HeadlineOneButton,
-  HeadlineTwoButton,
-  HeadlineThreeButton,
-  UnorderedListButton,
-  OrderedListButton,
-  BlockquoteButton,
-  CodeBlockButton,
-} from 'draft-js-buttons';
-
 import "./EditPage.scss";
 
 class EditPage extends Component{
