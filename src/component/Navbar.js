@@ -7,27 +7,17 @@ class Navbar extends Component{
   constructor(){
     super();
 
-    var temp_nav_items = []
-
-    firebase.firestore().collection("pages").get().then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
-        var doc_data = doc.data();
-
-        if(doc_data.name !== undefined){
-          temp_nav_items.push(doc_data);
-        }
-      });
-    })
-
     this.state = {
       backgroundColor: "trasparent",
-      nav_items: temp_nav_items
+      nav_items: []
     }
 
+    this.loadNavbarItems = this.loadNavbarItems.bind(this);
     this.logout = this.logout.bind(this);
   }
 
   componentDidMount(){
+    this.loadNavbarItems()
     if(window.location.pathname === "/"){
       this.setState({ color: "white", position: "fixed" });
 
@@ -42,6 +32,22 @@ class Navbar extends Component{
 
       });
     }
+  }
+
+  loadNavbarItems(){
+    const that = this;
+
+    firebase.firestore().collection("pages").get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        var doc_data = doc.data();
+
+        if(doc_data.name !== undefined){
+          that.setState({
+            nav_items: [...that.state.nav_items, doc_data]
+          });
+        }
+      });
+    })
   }
 
   logout(){
