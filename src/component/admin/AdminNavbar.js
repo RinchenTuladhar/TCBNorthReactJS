@@ -35,6 +35,9 @@ class AdminNavbar extends Component {
             <li className="item">
               <a href="/admin/edit_navigation">Edit Navigation</a>
             </li>
+            <li className="item">
+              <a href="/admin/photos">Photos</a>
+            </li>
             <li className="item logout">
               <a href="/" onClick={this.logout}>Logout</a>
             </li>

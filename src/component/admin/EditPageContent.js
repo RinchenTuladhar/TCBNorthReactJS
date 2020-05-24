@@ -59,7 +59,6 @@ class EditPageContent extends Component {
   render(){
     const editor_content =  this.state.content;
 
-
     return (
       <form onSubmit={this.handleSubmit}>
         <Editor

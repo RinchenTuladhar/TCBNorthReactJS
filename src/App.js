@@ -21,6 +21,7 @@ import AdminNavbar from "./component/admin/AdminNavbar";
 import AdminCreatePage from "./component/admin/CreatePage";
 import AdminEditPage from "./component/admin/EditPage";
 import AdminEditNavigation from "./component/admin/EditNavigation";
+import AdminPhotos from "./component/admin/Photos";
 
 import fire from "./config/Fire";
 
@@ -64,6 +65,7 @@ class App extends Component {
           <PrivateRoute authed={this.state.user} exact path="/admin/create_page" component={AdminCreatePage}/>
           <PrivateRoute authed={this.state.user} exact path="/admin/edit_page" component={AdminEditPage}/>
           <PrivateRoute authed={this.state.user} exact path="/admin/edit_navigation" component={AdminEditNavigation}/>
+          <PrivateRoute authed={this.state.user} exact path="/admin/photos" component={AdminPhotos}/>
 
           <Route path="*" component={CustomPage}/>
         </Switch>

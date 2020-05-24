@@ -47,11 +47,15 @@ class Navbar extends Component{
   logout(){
     firebase.auth().signOut().then(function() {
       return <Redirect to="/"/>;
-    }).catch(function(error) {
     });
   }
 
   render(){
+    const navbar_items = this.state.nav_items.map((item,i) =>
+      <li className="item" key={i}>
+        <a href={item.url} style={{color: this.state.color}}>{item.name}</a>
+      </li>
+    )
 
     return(
         <nav className="main-navbar" style={{backgroundColor: this.state.backgroundColor, position: this.state.position}}>
@@ -60,7 +64,7 @@ class Navbar extends Component{
               <a href="/"><img src="img/tibetanlogo.png" alt="TCB North UK Logo"/></a>
             </li>
 
-            {this.state.nav_items.map((item,i) => <li className="item" key={i}><a href={item.url} style={{color: this.state.color}}>{item.name}</a></li>)}
+            {navbar_items}
 
             <li className="item logout">
             { firebase.auth().currentUser ?
