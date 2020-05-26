@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CookieConsent from "react-cookie-consent";
 import PrivateRoute from "./PrivateRoute";
-import './App.css';
+import './App.scss';
 
 import {
   BrowserRouter as Router,

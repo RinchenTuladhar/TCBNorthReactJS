@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import fire from "../../config/Fire";
 
 class Admin extends Component {
@@ -22,7 +21,7 @@ class Admin extends Component {
 
   render(){
     return (
-      <div className="squished">
+      <div className="container">
         <h1>Admin</h1>
       </div>
     )

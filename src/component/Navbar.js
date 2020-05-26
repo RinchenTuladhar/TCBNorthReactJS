@@ -9,10 +9,12 @@ class Navbar extends Component{
 
     this.state = {
       backgroundColor: "trasparent",
-      nav_items: []
+      nav_items: [],
+      sub_nav_items: []
     }
 
     this.loadNavbarItems = this.loadNavbarItems.bind(this);
+    this.loadNavbarItemsList = this.loadNavbarItemsList.bind(this);
     this.logout = this.logout.bind(this);
   }
 
@@ -42,9 +44,15 @@ class Navbar extends Component{
         var doc_data = doc.data();
 
         if(doc_data.name !== undefined){
-          that.setState({
-            nav_items: [...that.state.nav_items, doc_data]
-          });
+          if(doc_data.child){
+            that.setState({
+              sub_nav_items: [...that.state.sub_nav_items, doc_data]
+            });
+          } else {
+            that.setState({
+              nav_items: [...that.state.nav_items, doc_data]
+            });
+          }
         }
       });
     })
@@ -56,12 +64,28 @@ class Navbar extends Component{
     });
   }
 
-  render(){
-    const navbar_items = this.state.nav_items.map((item,i) =>
+  loadNavbarItemsList(){
+    const nav_items = this.state.nav_items;
+    const sub_nav_items = this.state.sub_nav_items;
+
+    const navbar_items = nav_items.map((item,i) => {
+      return item.child === false ?
       <li className="item" key={i}>
         <a href={item.url} style={{color: this.state.color}}>{item.name}</a>
-      </li>
+        <div className="subnav-items">
+          { sub_nav_items.map((sub_item, i) => {
+            return item.name.localeCompare(sub_item.parent_name) > 0 ?
+            <a href={sub_item.url}>{sub_item.name}</a> : ""
+          }) }
+        </div>
+      </li> : ""}
     )
+
+    return navbar_items;
+  }
+
+  render(){
+    const navbar_items = this.loadNavbarItemsList();
 
     return(
         <nav className="main-navbar" style={{backgroundColor: this.state.backgroundColor, position: this.state.position}}>
@@ -74,7 +98,7 @@ class Navbar extends Component{
 
             <li className="item logout">
             { firebase.auth().currentUser ?
-              <a href="/" onClick={this.logout} style={{color: this.state.color}}>Logout</a> : <a href="/login" style={{color: this.state.color}}>Login</a>
+              <a href="/" onClick={this.logout} style={{color: this.state.color}}>Logout</a> : ""
             }
             </li>
           </ul>
