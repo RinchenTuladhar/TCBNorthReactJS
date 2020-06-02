@@ -16,6 +16,7 @@ class Navbar extends Component{
     this.loadNavbarItems = this.loadNavbarItems.bind(this);
     this.loadNavbarItemsList = this.loadNavbarItemsList.bind(this);
     this.logout = this.logout.bind(this);
+    this.loadSubNavbarItems = this.loadSubNavbarItems.bind(this);
   }
 
   componentDidMount(){
@@ -58,6 +59,13 @@ class Navbar extends Component{
     })
   }
 
+  loadSubNavbarItems(item){
+    const sub_nav_items = this.state.sub_nav_items
+    sub_nav_items.forEach(function(sub_nav_item){
+      console.log(sub_nav_item);
+    });
+  }
+
   logout(){
     firebase.auth().signOut().then(function() {
       return <Redirect to="/"/>;
@@ -70,13 +78,10 @@ class Navbar extends Component{
 
     const navbar_items = nav_items.map((item,i) => {
       return item.child === false ?
-      <li className="item" key={i}>
+      <li className="item nav-item" key={i}>
         <a href={item.url} style={{color: this.state.color}}>{item.name}</a>
-        <div className="subnav-items">
-          { sub_nav_items.map((sub_item, i) => {
-            return item.name.localeCompare(sub_item.parent_name) > 0 ?
-            <a href={sub_item.url}>{sub_item.name}</a> : ""
-          }) }
+        <div className="subnav-items dropdown">
+          {this.loadSubNavbarItems(item.name)}
         </div>
       </li> : ""}
     )
@@ -88,20 +93,27 @@ class Navbar extends Component{
     const navbar_items = this.loadNavbarItemsList();
 
     return(
-        <nav className="main-navbar" style={{backgroundColor: this.state.backgroundColor, position: this.state.position}}>
-          <ul className="menu">
-            <li className="logo">
-              <a href="/"><img src="img/tibetanlogo.png" alt="TCB North UK Logo"/></a>
-            </li>
+        <nav className="navbar navbar-expand-lg navbar-light main-navbar" style={{backgroundColor: this.state.backgroundColor, position: this.state.position}}>
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbarToggle" aria-controls="mainNavbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="mainNavbarToggle">
+            <ul className="menu navbar-nav mr-auto">
+              <li className="logo nav-item">
+                <a href="/"><img src="img/tibetanlogo.png" alt="TCB North UK Logo"/></a>
+              </li>
 
-            {navbar_items}
+              {navbar_items}
 
-            <li className="item logout">
-            { firebase.auth().currentUser ?
-              <a href="/" onClick={this.logout} style={{color: this.state.color}}>Logout</a> : ""
-            }
-            </li>
-          </ul>
+            </ul>
+            <ul className="nav navbar-nav navbar-right">
+              <li className="item logout nav-item">
+              { firebase.auth().currentUser ?
+                <a href="/" onClick={this.logout} style={{color: this.state.color}}>Logout</a> : ""
+              }
+              </li>
+            </ul>
+          </div>
         </nav>
     )
   };

@@ -55,12 +55,12 @@ class CreatePage extends Component{
 
   render(){
     return (
-      <div className="container squished">
+      <div className="container">
         <h1>Create Page</h1>
         <form onSubmit={this.handleSubmit}>
           <label>Page name
             <br/>
-            <input type="text" name="name" onChange={this.handleChange}/>
+            <input type="text" name="name" className="form-control" onChange={this.handleChange}/>
           </label>
           <br/><br/>
 
@@ -73,12 +73,12 @@ class CreatePage extends Component{
 
           <label>If yes, state url, e.g "events":
             <br/>
-            <input type="text" name="url" onChange={this.handleChange}/>
+            <input type="text" name="url" className="form-control"  onChange={this.handleChange}/>
           </label>
           <br/><br/>
 
           <label>If no, which page does this belong to:
-            <input type="text" name="parent_name" onChange={this.handleChange}/>
+            <input type="text" name="parent_name" className="form-control"  onChange={this.handleChange}/>
           </label>
           <br/>
           <input type="submit" value="Create"/>
