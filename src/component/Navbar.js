@@ -106,13 +106,6 @@ class Navbar extends Component{
               {navbar_items}
 
             </ul>
-            <ul className="nav navbar-nav navbar-right">
-              <li className="item logout nav-item">
-              { firebase.auth().currentUser ?
-                <a href="/" onClick={this.logout} style={{color: this.state.color}}>Logout</a> : ""
-              }
-              </li>
-            </ul>
           </div>
         </nav>
     )

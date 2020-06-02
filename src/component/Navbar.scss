@@ -28,4 +28,26 @@
       height: 4vw;
     }
   }
+
+  @media only screen and (max-width : 991px) {
+    background: white !important;
+
+    ul li {
+      border-bottom: 1px solid #e0e0e0;
+      width: 100%;
+      text-align: center;
+      padding: 15px;
+
+      a {
+        color: black !important;
+      }
+    }
+  }
+
+  @media only screen and (max-width : 721px) {
+    ul li {
+      height: auto;
+    }
+  }
+
 }
