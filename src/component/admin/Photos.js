@@ -57,7 +57,7 @@ class Photos extends Component {
     const stored_images_url = this.state.stored_images_url;
 
       return (
-        <div className="container squished">
+        <div className="container">
           <h1>Add Photos</h1>
           <form onSubmit={this.handleSubmit}>
             <label>Upload Image<br/>

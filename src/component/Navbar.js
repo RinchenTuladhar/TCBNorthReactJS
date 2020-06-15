@@ -61,9 +61,17 @@ class Navbar extends Component{
 
   loadSubNavbarItems(item){
     const sub_nav_items = this.state.sub_nav_items
+    var values = [];
     sub_nav_items.forEach(function(sub_nav_item){
-      console.log(sub_nav_item);
+      values.push(sub_nav_item);
     });
+
+    return values.map((sub_item, i) => {
+      return sub_item.parent_name === item ?
+        ""
+       :
+       ""
+    })
   }
 
   logout(){
@@ -78,10 +86,11 @@ class Navbar extends Component{
 
     const navbar_items = nav_items.map((item,i) => {
       return item.child === false ?
-      <li className="item nav-item" key={i}>
-        <a href={item.url} style={{color: this.state.color}}>{item.name}</a>
+
+      <li className="item nav-item dropdown" key={i}>
+        <a href={item.url} style={{color: this.state.color}} className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{item.name}</a>
         <div className="subnav-items dropdown">
-          {this.loadSubNavbarItems(item.name)}
+          {this.loadSubNavbarItems(item.url)}
         </div>
       </li> : ""}
     )

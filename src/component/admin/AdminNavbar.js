@@ -21,7 +21,7 @@ class AdminNavbar extends Component {
         <nav className="main-navbar">
           <ul className="menu">
             <li className="logo">
-              <p><strong><u>Admin</u></strong></p>
+              <strong>Admin</strong>
             </li>
             <li className="item">
               <a href="/admin">Dashboard</a>

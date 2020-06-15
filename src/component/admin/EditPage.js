@@ -66,7 +66,7 @@ class EditPage extends Component{
 
   render(){
     return (
-      <div className="container squished">
+      <div className="container">
       <h1> Click page to edit:</h1>
       {
         this.state.nav_items.map(v => {
