@@ -39,8 +39,9 @@ class Navbar extends Component{
 
   loadNavbarItems(){
     const that = this;
+    const pages = firebase.firestore().collection("pages").get();
 
-    firebase.firestore().collection("pages").get().then(function(querySnapshot) {
+    pages.then(function(querySnapshot) {
       querySnapshot.forEach(function(doc) {
         var doc_data = doc.data();
 
@@ -61,16 +62,28 @@ class Navbar extends Component{
 
   loadSubNavbarItems(item){
     const sub_nav_items = this.state.sub_nav_items
-    var values = [];
-    sub_nav_items.forEach(function(sub_nav_item){
-      values.push(sub_nav_item);
+    const main_nav_items = this.state.nav_items
+
+    var sub_nav_names = []
+    var true_main_nav_items = []
+
+    // List of sub nav items
+    sub_nav_items.map(function(item, i){
+      sub_nav_names.push(item['parent_name'])
     });
 
-    return values.map((sub_item, i) => {
+    // List of main nav items
+    main_nav_items.map(function(item, i){
+      if(sub_nav_names.includes(item['url'])){
+        true_main_nav_items.push(item);
+      }
+    });
+
+    return sub_nav_items.map((sub_item, i) => {
       return sub_item.parent_name === item ?
-        ""
+        sub_item.name
        :
-       ""
+       null
     })
   }
 
@@ -85,13 +98,17 @@ class Navbar extends Component{
     const sub_nav_items = this.state.sub_nav_items;
 
     const navbar_items = nav_items.map((item,i) => {
+      const sub_navbar_temp = this.loadSubNavbarItems(item.url)
+
       return item.child === false ?
 
-      <li className="item nav-item dropdown" key={i}>
-        <a href={item.url} style={{color: this.state.color}} className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{item.name}</a>
-        <div className="subnav-items dropdown">
-          {this.loadSubNavbarItems(item.url)}
-        </div>
+      <li className={"item nav-item" + item.has_children ? "dropdown" : ""} key={i}>
+        <a href={item.url} style={{color: this.state.color}} className={"nav-link"}  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{item.name}</a>
+
+        {item.has_children ? <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+          {sub_navbar_temp}
+        </div> : ""}
+
       </li> : ""}
     )
 

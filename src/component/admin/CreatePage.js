@@ -10,6 +10,7 @@ class CreatePage extends Component{
     this.state = {
       name: "",
       child: false,
+      has_children: false,
       parent_name: "",
       url: ""
     }
@@ -35,17 +36,28 @@ class CreatePage extends Component{
 
   handleSubmit(e){
     e.preventDefault();
-    const db = firebase.firestore();
+    const pages = firebase.firestore().collection("pages");
 
     const form_data = this.state
 
-    db.collection("pages").where("name", "==", this.state.name).get().then(function(querySnapshop){
+    pages.where("name", "==", this.state.name).get().then(function(querySnapshop){
       if(querySnapshop.size === 0){
-        db.collection("pages").add({
+        pages.add({
           child: form_data.child,
           name: form_data.name,
           parent_name: form_data.parent_name,
+          has_children: false,
           url: form_data.url
+        }).then(function(){
+          if(form_data.child === true){
+            pages.where("url", "==", form_data.parent_name).get().then(function(querySnapshot){
+              querySnapshot.forEach(function(doc){
+                pages.doc(doc.id).update({
+                  has_children: true
+                })
+              });
+            });
+          }
         });
       } else {
         console.log("Exists!");

@@ -9,6 +9,10 @@ function Footer(){
           <li><a href="https://www.facebook.com/groups/171713289595372/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
           <li><a href="mailto:tcbnorthuk@gmail.com" target="_blank" rel="noopener noreferrer">Email</a></li>
         </ul>
+        <br/>
+        <ul>
+          <li><span className="lighter-color">Developed using ReactJS</span></li>
+        </ul>
       </footer>
     </div>
   )
