@@ -37,7 +37,6 @@ class Photos extends Component {
   }
 
   handleChange(e){
-    console.log(e.target.files[0]);
     if(e.target.files[0]) {
       this.setState({
         images: e.target.files[0]

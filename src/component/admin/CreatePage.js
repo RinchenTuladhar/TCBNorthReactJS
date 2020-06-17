@@ -59,8 +59,6 @@ class CreatePage extends Component{
             });
           }
         });
-      } else {
-        console.log("Exists!");
       }
     });
   }

@@ -67,12 +67,10 @@ class Navbar extends Component{
     var sub_nav_names = []
     var true_main_nav_items = []
 
-    // List of sub nav items
     sub_nav_items.map(function(item, i){
       sub_nav_names.push(item['parent_name'])
     });
 
-    // List of main nav items
     main_nav_items.map(function(item, i){
       if(sub_nav_names.includes(item['url'])){
         true_main_nav_items.push(item);
@@ -81,7 +79,7 @@ class Navbar extends Component{
 
     return sub_nav_items.map((sub_item, i) => {
       return sub_item.parent_name === item ?
-        sub_item.name
+        <a href={sub_item.url} style={{color: "black"}} className="nav-link"  href={sub_item.url}>{sub_item.name}</a>
        :
        null
     })
@@ -99,18 +97,16 @@ class Navbar extends Component{
 
     const navbar_items = nav_items.map((item,i) => {
       const sub_navbar_temp = this.loadSubNavbarItems(item.url)
-
       return item.child === false ?
 
       <li className={"item nav-item" + item.has_children ? "dropdown" : ""} key={i}>
 
         {item.has_children ?
         <div>
-
-        <a href={item.url} style={{color: this.state.color}} className={"nav-link"}  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{item.name}</a>
-        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-          {sub_navbar_temp}
-        </div>
+          <a href={item.url} style={{color: this.state.color}} className={"nav-link"}  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{item.name}</a>
+          <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+            {sub_navbar_temp}
+          </div>
         </div> : <a href={item.url} style={{color: this.state.color}} className={"nav-link"}  href={item.url}>{item.name}</a>}
 
       </li> : ""}

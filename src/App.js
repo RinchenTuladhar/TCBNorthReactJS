@@ -64,6 +64,7 @@ class App extends Component {
           <PrivateRoute authed={this.state.user} exact path="/admin" component={Admin}/>
           <PrivateRoute authed={this.state.user} exact path="/admin/create_page" component={AdminCreatePage}/>
           <PrivateRoute authed={this.state.user} exact path="/admin/edit_page" component={AdminEditPage}/>
+          <PrivateRoute authed={this.state.user} exact path="/admin/:page/edit" component={AdminEditPage}/>
           <PrivateRoute authed={this.state.user} exact path="/admin/edit_navigation" component={AdminEditNavigation}/>
           <PrivateRoute authed={this.state.user} exact path="/admin/photos" component={AdminPhotos}/>
 
