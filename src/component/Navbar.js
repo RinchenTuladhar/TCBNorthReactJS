@@ -103,11 +103,15 @@ class Navbar extends Component{
       return item.child === false ?
 
       <li className={"item nav-item" + item.has_children ? "dropdown" : ""} key={i}>
-        <a href={item.url} style={{color: this.state.color}} className={"nav-link"}  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{item.name}</a>
 
-        {item.has_children ? <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+        {item.has_children ?
+        <div>
+
+        <a href={item.url} style={{color: this.state.color}} className={"nav-link"}  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{item.name}</a>
+        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
           {sub_navbar_temp}
-        </div> : ""}
+        </div>
+        </div> : <a href={item.url} style={{color: this.state.color}} className={"nav-link"}  href={item.url}>{item.name}</a>}
 
       </li> : ""}
     )
